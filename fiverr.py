@@ -1,5 +1,10 @@
 import requests
 import re, time
+from fake_useragent import UserAgent
+
+search = input(' > 🔍 Search For Any Service: ')
+
+ua = UserAgent().random
 
 try:
     print (" ---------------------------------------------------------------------------")
@@ -21,11 +26,11 @@ try:
             'sec-fetch-site': 'none',
             'sec-fetch-user': '?1',
             'upgrade-insecure-requests': '1',
-            'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+            'user-agent': ua,
         }
 
         params = {
-            'query': 'professional shopify store design',
+            'query': search,
             'page': i,
         }
 
@@ -37,6 +42,7 @@ try:
             seller_name = match[0]
             title = match[1]
             print(f" |    {i}   | {seller_name.ljust(17)} | {title}")
+            time.sleep(0.2)
     print (" ---------------------------------------------------------------------------")
             
 except KeyboardInterrupt:
