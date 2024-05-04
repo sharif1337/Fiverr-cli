@@ -4,14 +4,13 @@ from fake_useragent import UserAgent
 
 search = input(' > 🔍 Search For Any Service: ')
 
-ua = UserAgent().random
-
 try:
     print (" ---------------------------------------------------------------------------")
     print (" | PG No: |" + " " * 4 + "Seller Name".ljust(15) + "|".ljust(20) + "Title".ljust(25) + "|")
     print (" ---------------------------------------------------------------------------")
 
     for i in range(1,21):
+        ua = UserAgent().random
         headers = {
             'authority': 'www.fiverr.com',
             'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
@@ -31,6 +30,8 @@ try:
 
         params = {
             'query': search,
+            'source': 'top-bar',
+            'search_in': 'everywhere',
             'page': i,
         }
 
