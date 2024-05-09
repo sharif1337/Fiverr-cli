@@ -1,16 +1,14 @@
 import requests
 import re, time
-from fake_useragent import UserAgent
 
-search = input(' > 🔍 Search For Any Service: ')
 
 try:
+    search = input(' > 🔍 Search For Any Service: ')
     print (" ---------------------------------------------------------------------------")
     print (" | PG No: |" + " " * 4 + "Seller Name".ljust(15) + "|".ljust(20) + "Title".ljust(25) + "|")
     print (" ---------------------------------------------------------------------------")
 
     for i in range(1,21):
-        ua = UserAgent().random
         headers = {
             'authority': 'www.fiverr.com',
             'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
@@ -25,7 +23,7 @@ try:
             'sec-fetch-site': 'none',
             'sec-fetch-user': '?1',
             'upgrade-insecure-requests': '1',
-            'user-agent': ua,
+            'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
         }
 
         params = {
@@ -43,7 +41,6 @@ try:
             seller_name = match[0]
             title = match[1]
             print(f" |    {i}   | {seller_name.ljust(17)} | {title}")
-            time.sleep(0.2)
     print (" ---------------------------------------------------------------------------")
             
 except KeyboardInterrupt:
